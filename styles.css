@@ -16,22 +16,6 @@ h1 {
     font-size: 5rem;
 }
 
-/* Loading screen style */
-#loadingScreen {
-    transition: opacity 1s ease-out;
-}
-
-/* Hidden content initially */
-#content {
-    display: none;
-}
-
-/* You can also add any additional styles here for the countdown, button, or other elements */
-#countdown {
-    font-size: 24px;
-    text-align: center;
-}
-
 a.button {
     display: inline-block;
     outline: none;

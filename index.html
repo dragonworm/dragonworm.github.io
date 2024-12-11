@@ -6,6 +6,16 @@
     <title>Countdown Timer</title>
     <!-- Link to external CSS file -->
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Loading screen style */
+        #loadingScreen {
+            transition: opacity 1s ease-out;
+        }
+        /* Hidden content initially */
+        #content {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <!-- Loading message and content wrapper -->
@@ -14,7 +24,7 @@
     </div>
 
     <!-- Wrapper for the countdown and button (hidden initially) -->
-    <div id="content" style="display: none;">
+    <div id="content">
         <h1 id="countdownTimer"></h1>
         <a href="https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo" class="button">Click Me</a>
     </div>
@@ -60,16 +70,21 @@
                 `${days}d ${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s`;
         }
 
-        // Show the content after a 1-second delay
+        // Show the content after a 1-second delay and fade out the loading screen
         setTimeout(function() {
-            // Hide the loading screen and reveal the countdown and button
-            document.getElementById('loadingScreen').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
-            
-            // Start the countdown updates
-            updateCountdown(); 
-            const interval = setInterval(updateCountdown, 1000);
-        }, 1000); // 1 second delay
+            // Start fading out the loading screen
+            document.getElementById('loadingScreen').style.opacity = '0';
+
+            // After the fade-out, hide the loading screen and show the content
+            setTimeout(function() {
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                
+                // Start the countdown updates
+                updateCountdown(); 
+                const interval = setInterval(updateCountdown, 1000);
+            }, 1000); // Fade out duration matches the CSS transition
+        }, 1000); // Initial delay
     </script>
 </body>
 </html>
