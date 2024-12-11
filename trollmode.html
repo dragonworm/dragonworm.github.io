@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inyato</title>
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Loading screen style */
+        #loadingScreen {
+            transition: opacity 1s ease-out;
+        }
+        /* Hidden content initially */
+        #content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading message and content wrapper -->
+    <div id="loadingScreen">
+        <h1 id="countdown">Loading...</h1> <!-- Initial loading message -->
+    </div>
+
+    <!-- Wrapper for the countdown and button (hidden initially) -->
+    <div id="content">
+        <h1 id="countdownTimer"></h1>
+        <a href="https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo" class="button">Spotify</a>
+    </div>
+
+    <script>
+        // Set the target time to January 23rd, 2025
+        const targetTime = new Date('2025-01-23T00:00:00').getTime();
+
+        // Array of possible loading messages
+        const loadingMessages = [
+            "Liming the wires...",
+            "Making that money grow...",
+            "Moving the front to the back...",
+            "Sitting on the porch...",
+            "Booking flights to Qatar..."
+        ];
+
+        // Function to get a random loading message
+        function getRandomLoadingMessage() {
+            const randomIndex = Math.floor(Math.random() * loadingMessages.length);
+            return loadingMessages[randomIndex];
+        }
+
+        // Set the random loading message
+        document.getElementById('countdown').textContent = getRandomLoadingMessage();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = targetTime - now;
+
+            if (timeLeft <= 0) {
+                document.getElementById('countdownTimer').textContent = "00:00:00";
+                clearInterval(interval);
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('countdownTimer').textContent = 
+                `${days}d ${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s`;
+        }
+
+        // Show the content after a 1-second delay and fade out the loading screen
+        setTimeout(function() {
+            // Start fading out the loading screen
+            document.getElementById('loadingScreen').style.opacity = '0';
+
+            // After the fade-out, hide the loading screen and show the content
+            setTimeout(function() {
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                
+                // Start the countdown updates
+                updateCountdown(); 
+                const interval = setInterval(updateCountdown, 1000);
+            }, 1000); // Fade out duration matches the CSS transition
+        }, 1000); // Initial delay
+    </script>
+</body>
+</html>
