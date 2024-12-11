@@ -42,3 +42,32 @@ a.button {
 a.button:hover {
     background-color: #1db954;
 }
+
+.arrow {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#content {
+    display: block; /* Show content right away */
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    filter: brightness(50%);
+}

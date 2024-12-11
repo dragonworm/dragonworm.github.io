@@ -4,21 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inyato</title>
-	<link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <!-- Link to external CSS file -->
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Hidden content initially */
-        #content {
-            display: block; /* Show content right away */
-        }
-    </style>
 </head>
 <body>
     <!-- Wrapper for the countdown and button -->
     <div id="content">
         <h1 id="countdownTimer"></h1>
-        <a href="https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo" class="button">Spotify</a>
+        <span class="arrow" id="leftArrow">&#9664;</span>
+        <a id="spotifyButton" href="https://open.spotify.com" class="button" style="background-color: green;" target="_blank">Spotify</a>
+        <span class="arrow" id="rightArrow">&#9654;</span>
     </div>
 
     <script>
@@ -47,6 +43,37 @@
         // Start the countdown updates
         updateCountdown();
         const interval = setInterval(updateCountdown, 1000);
+
+        // Links and colors array for the button
+        const links = [
+            "https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo",
+            "https://www.youtube.com/@srock303",
+            "https://www.instagram.com/inyato.band/",
+            "https://soundcloud.com/limewirearchive"
+        ];
+        const colors = ["green", "red", "purple", "orange"];
+        const platformNames = ["Spotify", "YouTube", "Instagram", "SoundCloud"];
+
+        let currentIndex = 0;
+
+        // Update button link and color
+        function updateLink(index) {
+            const spotifyButton = document.getElementById('spotifyButton');
+            spotifyButton.href = links[index];
+            spotifyButton.style.backgroundColor = colors[index];
+            spotifyButton.textContent = platformNames[index];
+        }
+
+        // Event listeners for arrows
+        document.getElementById('leftArrow').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + links.length) % links.length;
+            updateLink(currentIndex);
+        });
+
+        document.getElementById('rightArrow').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % links.length;
+            updateLink(currentIndex);
+        });
     </script>
 </body>
 </html>
