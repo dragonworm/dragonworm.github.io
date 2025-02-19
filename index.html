@@ -1,30 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inyato</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Control Panel</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Loading Animation -->
-    <section class="wrapper" id="loader">
-        <div class="loader">
-            <div class="loading one"></div>
-            <div class="loading two"></div>
-            <div class="loading three"></div>
+    <div class="control-panel">
+        <!-- Central Spotify Button -->
+        <a id="spotifyButton" href="https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo" class="big-button" target="_blank">Spotify</a>
+        
+        <!-- Other Interactive Elements -->
+        <div class="controls">
+            <button class="button" onclick="alert('Lever activated!')">Lever</button>
+            <button class="button" onclick="alert('Switch flipped!')">Switch</button>
+            <button class="button" onclick="alert('Dial turned!')">Dial</button>
+            <button class="button" onclick="alert('Turn Key used!')">Turn Key</button>
         </div>
-    </section>
-
-    <!-- Main Content -->
-    <div id="content" style="display: none;"> <!-- Hidden initially -->
-        <h1 id="countdownTimer"></h1>
-        <span class="arrow" id="leftArrow">&#9664;</span>
-        <a id="spotifyButton" href="https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo" class="button" style="background-color: green;" target="_blank">Spotify</a>
-        <span class="arrow" id="rightArrow">&#9654;</span>
     </div>
-
-    <script src="index.js"></script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
