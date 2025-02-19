@@ -32,14 +32,29 @@
             position: relative;
             z-index: 1;
         }
+        #spotifyButton {
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
     </style>
 </head>
 <body>
     <div class="control-panel">
-        <img src="https://imgur.com/X3674to" class="background-image" alt="Control Panel Background">
+        <img src="https://i.imgur.com/X3674to.png" class="background-image" alt="Control Panel Background">
         
         <!-- Central Spotify Button -->
-        <a id="spotifyButton" href="https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo" class="button" style="background-color: green;" target="_blank">Spotify</a>        
+        <a id="spotifyButton" href="https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo" target="_blank">Spotify</a>
+        
         <!-- Other Interactive Elements -->
         <div class="controls">
             <button class="button" onclick="alert('Lever activated!')">Lever</button>
@@ -49,6 +64,6 @@
         </div>
     </div>
     
-    <script src="script.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
