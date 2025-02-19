@@ -53,6 +53,30 @@
         .button:hover {
             background-color: #45a049;
         }
+                /* Different shapes for buttons */
+        .square {
+            background-color: #4CAF50;
+            width: 80px;
+            height: 80px;
+        }
+        .rounded-rectangle {
+            background-color: #FF6347;
+            width: 120px;
+            height: 60px;
+            border-radius: 15px;
+        }
+        .circle {
+            background-color: #1DB954;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+        .irregular {
+            background-color: #FFD700;
+            width: 120px;
+            height: 60px;
+            border-radius: 30px 10px 30px 10px;
+        }
         #spotifyButton {
             display: block;
             position: absolute;
@@ -87,10 +111,11 @@
 
         <!-- Other Interactive Elements -->
         <div class="controls">
-            <button class="button" onclick="window.location.href='https://www.youtube.com/@srock303'">Youtube</button>
-            <button class="button" onclick="window.location.href='https://www.instagram.com/inyato.band/'">Instagram</button>
-            <button class="button" onclick="window.location.href='https://soundcloud.com/limewirearchive'">Archive</button>
-            <button class="button" onclick="alert('Turn Key used!')">Merch</button>
+             <button class="button square" onclick="window.location.href='https://www.youtube.com/@srock303'">Youtube</button>
+            <button class="button rounded-rectangle" onclick="window.location.href='https://www.instagram.com/inyato.band/'">Instagram</button>
+            <button class="button circle" onclick="window.location.href='https://soundcloud.com/limewirearchive'">Archive</button>
+            <button class="button irregular" onclick="alert('Turn Key used!')">Merch</button>
+        </div>
         </div>
     </div>
     
