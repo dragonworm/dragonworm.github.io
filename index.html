@@ -4,17 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inyato Control Panel</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            background: url('/mnt/data/istockphoto-1179361717-612x612.jpg') no-repeat center center fixed;
+            background: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbG1sa2c5Mzl5N2VrOWx2ZG9wcXFlOWtuYXE0bXB2MzY1dWFqbHM2eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3xz2BU5QDmY2mf0kJq/giphy.gif') no-repeat center center fixed;
             background-size: cover;
+        }
+        .control-panel {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .background-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            opacity: 0.7;
+            z-index: -1;
         }
     </style>
 </head>
 <body>
     <div class="control-panel">
+        <img src="/mnt/data/istockphoto-1179361717-612x612.jpg" class="background-image" alt="Control Panel Background">
+        
         <!-- Central Spotify Button -->
         <a id="spotifyButton" href="https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo" class="big-button" target="_blank">Spotify</a>
         
