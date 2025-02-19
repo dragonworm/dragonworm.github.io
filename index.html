@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Panel</title>
+    <title>Inyato Control Panel</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
             background: url('https://78.media.tumblr.com/17f014371ad62c8f7a5decffe43db5b5/tumblr_os4k2k9tRD1qlwqqzo1_540.gif') no-repeat center center fixed;
             background-size: cover;
             position: relative;
+            margin: 0;
+            height: 100vh;
         }
         .control-panel {
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            justify-content: flex-end;
+            height: 100%;
+            padding-bottom: 50px; /* Space for buttons */
         }
         .background-image {
             position: absolute;
@@ -28,15 +31,37 @@
             max-width: 800px;
             z-index: 0;
         }
-        .controls, #spotifyButton {
-            position: relative;
+        .controls {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            background-color: #2F4F4F; /* Dark forest green */
+            padding: 20px 0;
+            position: absolute;
+            bottom: 0;
             z-index: 1;
         }
-         #spotifyButton {
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        #spotifyButton {
             display: block;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
             width: 100px;
             height: 100px;
-            #background-image: url('https://i.imgur.com/3aRvK2i.jpeg');
+            background-image: url('https://i.imgur.com/3aRvK2i.jpeg');
             background-size: cover;
             color: #B8860B; /* Golden Brown color */
             text-align: center;
@@ -47,16 +72,16 @@
             border-radius: 5px;
             border: 2px solid black;
             box-sizing: border-box;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
     <div class="control-panel">
 
-        
         <!-- Central Spotify Button -->
         <a id="spotifyButton" href="https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo" target="_blank">Spotify</a>
-        
+
         <!-- Other Interactive Elements -->
         <div class="controls">
             <button class="button" onclick="window.location.href='https://www.youtube.com/@srock303'">Youtube</button>
