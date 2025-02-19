@@ -56,23 +56,26 @@
         #spotifyButton {
             display: block;
             position: absolute;
-            left: 20px;
+            left: 10px; /* All the way to the left */
             top: 50%;
             transform: translateY(-50%);
-            width: 100px;
-            height: 100px;
-            background-image: url('https://i.imgur.com/3aRvK2i.jpeg');
-            background-size: cover;
-            color: #B8860B; /* Golden Brown color */
+            width: 160px; /* Resized to fit Spotify shape */
+            height: 60px; /* Resized for a more rectangular button */
+            color: #1DB954; /* Spotify's green color */
             text-align: center;
-            line-height: 100px;
+            line-height: 60px; /* Center text vertically */
             font-size: 18px;
             font-weight: bold;
             text-decoration: none;
-            border-radius: 5px;
-            border: 2px solid black;
+            border-radius: 30px; /* Rounded corners to resemble Spotify button style */
+            border: 2px solid #1DB954; /* Green border to match Spotify's color */
+            background-color: white; /* White background for Spotify-like button */
             box-sizing: border-box;
             z-index: 1;
+        }
+        #spotifyButton:hover {
+            background-color: #1DB954; /* Spotify green on hover */
+            color: white; /* Text turns white on hover */
         }
     </style>
 </head>
