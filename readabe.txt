@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inyato Control Panel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://78.media.tumblr.com/17f014371ad62c8f7a5decffe43db5b5/tumblr_os4k2k9tRD1qlwqqzo1_540.gif') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background-color: #2c4f32;
+            padding: 20px;
+            border-radius: 10px;
+            position: absolute;
+        }
+        .button {
+            background-color: #2c4f32;
+            color: white;
+            padding: 12px 20px;
+            border: 2px solid white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Press Start 2P', sans-serif;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            text-decoration: none;
+            width: 200px;
+        }
+        .button:hover {
+            background-color: #45a049;
+            color: #FF27FF;
+            transform: scale(1.05);
+        }
+        .pause-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: red;
+            color: white;
+            padding: 10px 15px;
+            border: 2px solid white;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Press Start 2P', sans-serif;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls" id="movingControls">
+        <button class="button" onclick="window.location.href='https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo'">Spotify</button>
+        <button class="button" onclick="window.location.href='https://www.youtube.com/@srock303'">YouTube</button>
+        <button class="button" onclick="window.location.href='https://www.instagram.com/inyato.band/'">Instagram</button>
+        <button class="button" onclick="window.location.href='https://soundcloud.com/limewirearchive'">Archive</button>
+        <button class="button" onclick="alert('Turn Key used!')">Merch</button>
+    </div>
+    <button class="pause-button" id="toggleButton" onclick="toggleMovement()">Pause</button>
+    <script>
+        let controls = document.getElementById("movingControls");
+        let toggleButton = document.getElementById("toggleButton");
+        let dx = 2;
+        let dy = 2;
+        let moving = true;
+
+        // Center the controls initially
+        function centerControls() {
+            controls.style.left = (window.innerWidth - controls.offsetWidth) / 2 + "px";
+            controls.style.top = (window.innerHeight - controls.offsetHeight) / 2 + "px";
+        }
+
+        function moveControls() {
+            if (!moving) return;
+
+            let rect = controls.getBoundingClientRect();
+            let maxX = window.innerWidth - rect.width;
+            let maxY = window.innerHeight - rect.height;
+            let x = controls.offsetLeft + dx;
+            let y = controls.offsetTop + dy;
+
+            // Bounce off the walls
+            if (x <= 0 || x >= maxX) dx *= -1;
+            if (y <= 0 || y >= maxY) dy *= -1;
+
+            controls.style.left = x + "px";
+            controls.style.top = y + "px";
+
+            requestAnimationFrame(moveControls);
+        }
+
+        function toggleMovement() {
+            moving = !moving;
+            toggleButton.textContent = moving ? "Pause" : "Start";
+            if (moving) moveControls();
+        }
+
+        // Ensure positioning is set before movement starts
+        controls.style.position = "absolute";
+        centerControls();
+        moveControls();
+    </script>
+</body>
+</html>
