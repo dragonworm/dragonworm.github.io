@@ -34,11 +34,6 @@
             transform: translateY(40px); /* Animation of pulling down */
         }
 
-        /* Color Inversion */
-        .invert {
-            filter: invert(1);
-        }
-
     </style>
 </head>
 <body>
@@ -54,7 +49,7 @@
 
     <!-- Lever -->
     <div id="lever-container">
-        <div id="lever" onclick="toggleColors()"></div>
+        <div id="lever" onclick="changeBackground()"></div>
         <span>Lever</span>
     </div>
 
@@ -100,14 +95,23 @@
             return num * num;
         };
 
-        // Function to toggle the color inversion when the lever is pulled
-        function toggleColors() {
-            document.body.classList.toggle('invert');
+        // Array of background images
+        let backgroundImages = [
+            'https://78.media.tumblr.com/17f014371ad62c8f7a5decffe43db5b5/tumblr_os4k2k9tRD1qlwqqzo1_540.gif',
+            'https://example.com/another-image.jpg', // Add your own URLs here
+            'https://example.com/some-other-image.jpg' // Add more URLs as needed
+        ];
+
+        let currentImageIndex = 0;
+
+        // Function to change the background when the lever is clicked
+        function changeBackground() {
+            currentImageIndex = (currentImageIndex + 1) % backgroundImages.length; // Cycle through the images
+            document.body.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
         }
     </script>
 </body>
 </html>
-
 
 
 <!-- yerrrrpppp --> 
