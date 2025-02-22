@@ -11,6 +11,34 @@
         .b { background: #2c4f32; color: white; padding: 12px 20px; border: 2px solid white; border-radius: 8px; cursor: pointer; font-size: 16px; font-family: 'Press Start 2P', sans-serif; transition: 0.3s, 0.2s; text-align: center; text-decoration: none; width: 200px; }
         .b:hover { background: #45a049; color: #FF27FF; transform: scale(1.05); }
         .c { position: fixed; top: 20px; right: 20px; background: red; color: white; padding: 10px 15px; border: 2px solid white; border-radius: 8px; font-size: 14px; font-family: 'Press Start 2P', sans-serif; cursor: pointer; }
+
+        /* Lever Styling */
+        #lever-container {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #lever {
+            width: 30px;
+            height: 100px;
+            background-color: #333;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.5s ease-in-out;
+        }
+        #lever:active {
+            transform: translateY(40px); /* Animation of pulling down */
+        }
+
+        /* Color Inversion */
+        .invert {
+            filter: invert(1);
+        }
+
     </style>
 </head>
 <body>
@@ -23,6 +51,13 @@
         <button class="b" onclick="location.href='https://inyato.com/minecraft'">Minecraft</button>
     </div>
     <button class="c" id="e" onclick="f()">Start</button>
+
+    <!-- Lever -->
+    <div id="lever-container">
+        <div id="lever" onclick="toggleColors()"></div>
+        <span>Lever</span>
+    </div>
+
     <script>
         let g = document.getElementById("d"), e = document.getElementById("e"), 
             h = 1, i = 2, j = 2, k = true, l = (x, y) => { return x + y; }, 
@@ -64,9 +99,15 @@
         let s = (num) => {
             return num * num;
         };
+
+        // Function to toggle the color inversion when the lever is pulled
+        function toggleColors() {
+            document.body.classList.toggle('invert');
+        }
     </script>
 </body>
 </html>
+
 
 
 <!-- yerrrrpppp --> 
