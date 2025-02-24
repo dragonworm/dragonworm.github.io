@@ -35,8 +35,64 @@
         }
 
     </style>
+
+    
 </head>
 <body>
+
+ <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        video {
+            width: 80%;
+            max-width: 600px;
+            display: block;
+            margin: 0 auto;
+        }
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto;
+        }
+        button img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+    <video id="myVideo" controls>
+        <source src="your-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <!-- Mute/Unmute Button -->
+    <button id="muteButton">
+        <img id="muteIcon" src="unmute-icon.png" alt="Mute/Unmute">
+    </button>
+
+    <script>
+        // Select video and button elements
+        const video = document.getElementById("myVideo");
+        const muteButton = document.getElementById("muteButton");
+        const muteIcon = document.getElementById("muteIcon");
+
+        // Add event listener for mute toggle
+        muteButton.addEventListener("click", function() {
+            if (video.muted) {
+                video.muted = false;
+                muteIcon.src = "unmute-icon.png"; // Change to unmute icon
+            } else {
+                video.muted = true;
+                muteIcon.src = "mute-icon.png"; // Change to mute icon
+            }
+        });
+    </script>
 <audio id="bg-music" autoplay loop>
     <source src="Untitled-video-Made-with-Clipchamp.ogg" type="audio/ogg">
     <source src="Untitled-video-Made-with-Clipchamp.mp3" type="audio/mpeg">
