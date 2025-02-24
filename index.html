@@ -47,8 +47,8 @@
             margin: 20px;
         }
         video {
-            width: 80%;
-            max-width: 600px;
+            width: 50%;
+            max-width: 150;
             display: block;
             margin: 0 auto;
         }
@@ -71,9 +71,9 @@
     left: 0px; /* Move the video button more to the left */
     cursor: pointer; 
     z-index: 1000;
-    border: 10px solid #f5d04c; /* Golden frame border */
-    border-radius: 15px; /* Rounded corners for the frame */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    border: 10px solid #ffd94c; /* Golden frame border */
+    border-radius: 10px; /* Rounded corners for the frame */
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.9); /* Shadow for depth */
     display: block; /* Ensure it's visible */
 ">
     <source src="your-video.mp4" type="video/mp4">
@@ -92,28 +92,6 @@
         }
     });
 
-    // This hides any leftover image that might remain when the video is not playing
-    video.addEventListener("play", function() {
-        video.style.display = "block"; // Show video when playing
-    });
-
-    video.addEventListener("pause", function() {
-        video.style.display = "block"; // Ensure it stays visible, but reset if needed
-    });
-</script>
-
-
-<script>
-    const video = document.getElementById("myVideo");
-
-    // When video is clicked, play or pause
-    video.addEventListener("click", function() {
-        if (video.paused) {
-            video.play();
-        } else {
-            video.pause();
-        }
-    });
 </script>
 
     <!-- Mute/Unmute Button -->
