@@ -39,8 +39,20 @@
 <body>
 <audio id="bg-music" autoplay loop>
     <source src="Untitled-video-Made-with-Clipchamp.ogg" type="audio/ogg">
-    Your browser does not support the audio tag.
+    <source src="Untitled-video-Made-with-Clipchamp.mp3" type="audio/mpeg">
 </audio>
+
+</audio>
+    <audio id="bg-music" loop>
+    <source src="Untitled-video-Made-with-Clipchamp.ogg" type="audio/ogg">
+</audio>
+
+<script>
+    document.addEventListener('click', function() {
+        document.getElementById('bg-music').play();
+    }, { once: true });
+</script>
+
     <div class="a" id="d">
         <button class="b" onclick="location.href='https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo'">Spotify</button>
         <button class="b" onclick="location.href='https://www.youtube.com/@srock303'">YouTube</button>
