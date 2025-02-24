@@ -65,17 +65,43 @@
         }
     </style>
 </head>
-
-    <video id="myVideo" width="200" height="112" style="
+<video id="myVideo" width="150" height="84" style="
     position: fixed; 
     top: 10px; 
-    left: 10px; 
+    left: 0px; /* Move the video button more to the left */
     cursor: pointer; 
     z-index: 1000;
+    border: 10px solid #f5d04c; /* Golden frame border */
+    border-radius: 15px; /* Rounded corners for the frame */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    display: block; /* Ensure it's visible */
 ">
     <source src="your-video.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
+
+<script>
+    const video = document.getElementById("myVideo");
+
+    // When video is clicked, play or pause
+    video.addEventListener("click", function() {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    });
+
+    // This hides any leftover image that might remain when the video is not playing
+    video.addEventListener("play", function() {
+        video.style.display = "block"; // Show video when playing
+    });
+
+    video.addEventListener("pause", function() {
+        video.style.display = "block"; // Ensure it stays visible, but reset if needed
+    });
+</script>
+
 
 <script>
     const video = document.getElementById("myVideo");
