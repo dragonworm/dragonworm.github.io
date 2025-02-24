@@ -52,6 +52,37 @@
         document.getElementById('bg-music').play();
     }, { once: true });
 </script>
+<button id="mute-button" style="
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    padding: 10px 15px; 
+    font-size: 16px; 
+    background: red; 
+    color: white; 
+    border: 2px solid white; 
+    border-radius: 8px; 
+    cursor: pointer;
+">
+    🔇 Mute
+</button>
+
+<script>
+    const audio = document.getElementById("bg-music");
+    const muteButton = document.getElementById("mute-button");
+
+    muteButton.addEventListener("click", function() {
+        if (audio.muted) {
+            audio.muted = false;
+            muteButton.textContent = "🔇 Mute";
+            muteButton.style.background = "red";
+        } else {
+            audio.muted = true;
+            muteButton.textContent = "🔊 Unmute";
+            muteButton.style.background = "green";
+        }
+    });
+</script>
 
     <div class="a" id="d">
         <button class="b" onclick="location.href='https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo'">Spotify</button>
