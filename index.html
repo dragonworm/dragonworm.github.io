@@ -65,17 +65,22 @@
         }
     </style>
 </head>
-<video id="myVideo" width="150" height="84" style="
-    position: fixed; 
-    top: 10px; 
-    left: 0px; /* Move the video button more to the left */
-    cursor: pointer; 
+#myVideo {
+    position: fixed;
+    top: 10px;
+    left: 0px; /* Adjust position as needed */
+    cursor: pointer;
     z-index: 1000;
+    display: block;
     border: 10px solid #ffd94c; /* Golden frame border */
     border-radius: 10px; /* Rounded corners for the frame */
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.9); /* Shadow for depth */
-    display: block; /* Ensure it's visible */
-">
+    width: auto; /* Ensures the width adapts to the content */
+    height: auto; /* Ensures the height adapts to the content */
+    max-width: 100%; /* Prevents overflow */
+    max-height: 100vh; /* Prevents it from exceeding the viewport height */
+}
+<video id="myVideo" controls>
     <source src="your-video.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
@@ -87,6 +92,7 @@
     video.addEventListener("click", function() {
         if (video.paused) {
             video.play();
+            document.getElementById('bg-music').play();
         } else {
             video.pause();
         }
@@ -126,11 +132,11 @@
     <source src="Untitled-video-Made-with-Clipchamp.ogg" type="audio/ogg">
 </audio>
 
-<script>
-    document.addEventListener('click', function() {
-        document.getElementById('bg-music').play();
-    }, { once: true });
-</script>
+        <--! <script>
+            document.addEventListener('click', function() {
+            document.getElementById('bg-music').play();
+            }, { once: true });
+        </script> -->
 <button id="mute-button" style="
     position: fixed; 
     bottom: 20px; 
