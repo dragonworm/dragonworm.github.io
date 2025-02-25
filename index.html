@@ -34,6 +34,22 @@
             transform: translateY(40px); /* Animation of pulling down */
         }
 
+        #myVideo {
+            position: fixed;
+            top: 10px;
+            left: 0px; /* Adjust position as needed */
+            cursor: pointer;
+            z-index: 1000;
+            display: block;
+            border: 10px solid #ffd94c; /* Golden frame border */
+            border-radius: 10px; /* Rounded corners for the frame */
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.9); /* Shadow for depth */
+            width: auto; /* Ensures the width adapts to the content */
+            height: auto; /* Ensures the height adapts to the content */
+            max-width: 100%; /* Prevents overflow */
+            max-height: 100vh; /* Prevents it from exceeding the viewport height */
+}
+
     </style>
 
     
@@ -65,21 +81,6 @@
         }
     </style>
 </head>
-#myVideo {
-    position: fixed;
-    top: 10px;
-    left: 0px; /* Adjust position as needed */
-    cursor: pointer;
-    z-index: 1000;
-    display: block;
-    border: 10px solid #ffd94c; /* Golden frame border */
-    border-radius: 10px; /* Rounded corners for the frame */
-    box-shadow: 0 0 60px rgba(0, 0, 0, 0.9); /* Shadow for depth */
-    width: auto; /* Ensures the width adapts to the content */
-    height: auto; /* Ensures the height adapts to the content */
-    max-width: 100%; /* Prevents overflow */
-    max-height: 100vh; /* Prevents it from exceeding the viewport height */
-}
 <video id="myVideo" controls>
     <source src="your-video.mp4" type="video/mp4">
     Your browser does not support the video tag.
