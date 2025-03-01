@@ -86,7 +86,25 @@
 </video>
 
 <script>
-    
+    document.addEventListener("mousemove", function (event) {
+    let img = document.createElement("img");
+    img.src = "https://via.placeholder.com/30"; // Replace with your image URL
+    img.style.position = "absolute";
+    img.style.left = event.pageX + "px";
+    img.style.top = event.pageY + "px";
+    img.style.pointerEvents = "none";
+    img.style.opacity = "0.8";
+    img.style.transform = "translate(-50%, -50%)";
+
+    document.body.appendChild(img);
+
+    setTimeout(() => {
+        img.style.transition = "opacity 0.5s ease-out";
+        img.style.opacity = "0";
+        setTimeout(() => img.remove(), 500);
+    }, 500);
+});
+
     
     const video = document.getElementById("myVideo");
 
