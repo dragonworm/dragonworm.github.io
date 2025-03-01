@@ -80,10 +80,7 @@
         }
     </style>
 </head>
-<video id="myVideo" controls>
-    <source src="your-video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+
 
 <script>
     document.addEventListener("mousemove", function (event) {
@@ -152,11 +149,6 @@
     <source src="Untitled-video-Made-with-Clipchamp.ogg" type="audio/ogg">
 </audio>
 
-        <--! <script>
-            document.addEventListener('click', function() {
-            document.getElementById('bg-music').play();
-            }, { once: true });
-        </script> -->
 <button id="mute-button" style="
     position: fixed; 
     bottom: 20px; 
@@ -206,12 +198,12 @@
     </div>
 
     <script>
-        /*
+        // bouncing menu
         let g = document.getElementById("d"), e = document.getElementById("e"), 
             h = 1, i = 2, j = 2, k = true, l = (x, y) => { return x + y; }, 
             m = (p, q) => { return p * q; }, n = (a, b) => { return a - b; },
             o = (t) => { return t === 1 ? 'Yes' : 'No'; }, p = (x) => { return x % 2 === 0 ? "Even" : "Odd"; };
-*/
+
         let f = () => {
             k = !k;
             e.textContent = k ? "Pause" : "Start";
