@@ -62,21 +62,7 @@
         setTimeout(() => img.remove(), 500);
     }, 500);
 });
-
-    
-    const video = document.getElementById("myVideo");
-
-    // When video is clicked, play or pause
-    video.addEventListener("click", function() {
-        if (video.paused) {
-            video.play();
-            document.getElementById('bg-music').play();
-        } else {
-            video.pause();
-        }
-    });
-
-</script>
+ </script>
 
     <!-- Mute/Unmute Button -->
     <button id="muteButton">
@@ -85,7 +71,6 @@
 
     <script>
         // Select video and button elements
-        const video = document.getElementById("myVideo");
         const muteButton = document.getElementById("muteButton");
         const muteIcon = document.getElementById("muteIcon");
 
@@ -100,15 +85,6 @@
             }
         });
     </script>
-<audio id="bg-music" autoplay loop>
-    <source src="Untitled-video-Made-with-Clipchamp.ogg" type="audio/ogg">
-    <source src="Untitled-video-Made-with-Clipchamp.mp3" type="audio/mpeg">
-</audio>
-
-</audio>
-    <audio id="bg-music" loop>
-    <source src="Untitled-video-Made-with-Clipchamp.ogg" type="audio/ogg">
-</audio>
 
 <button id="mute-button" style="
     position: fixed; 
