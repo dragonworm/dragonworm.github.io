@@ -156,8 +156,8 @@
             speedMultiplier = 1.4; // Increases speed by 40% per click  
     
         let toggleMovement = () => {  // the pause button logic
-            if (isMoving) !isMoving;  
-            else if (!isMoving) isMoving;
+            if (isMoving) isMoving = false;  
+            else if (!isMoving) isMoving = true;
             toggleButton.textContent = isMoving ? "Start" : "Pause";  
             if (isMoving) moveMenu();  
         };  
