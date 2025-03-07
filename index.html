@@ -89,7 +89,7 @@
         <button class="button" onclick="alert('Turn Key used!')">Merch</button>
         <button class="button" onclick="location.href='https://inyato.com/minecraft'">Minecraft</button>
     </div>
-    <button class="start-btn" id="toggleButton" onclick="toggleMovement()">Stop</button>
+    <button class="start-btn" id="toggleButton" onclick="toggleMovement()">Pause</button>
     <div id="lever-container">
         <div id="lever" onclick="changeBackground()"></div>
     </div>
@@ -156,9 +156,9 @@
             speedMultiplier = 1.4; // Increases speed by 40% per click  
     
         let toggleMovement = () => {  // the pause button logic
-            if (isMoving) !isMoving;  
-            else if (!isMoving) isMoving;
-            toggleButton.textContent = isMoving ? "Pause" : "Start";  
+            if (isMoving) {!isMoving};  
+            else if (!isMoving) {isMoving};
+            toggleButton.textContent = isMoving ? "Start" : "Pause";  
             moveMenu();  
         };  
         
