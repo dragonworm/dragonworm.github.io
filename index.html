@@ -56,7 +56,7 @@
             font-family: 'Press Start 2P', sans-serif;
             cursor: pointer;
         }
-        /* Lever Styling */
+        /* Background Change Lever Styling */
         #lever-container {
             position: fixed;
             left: 0;
@@ -92,7 +92,7 @@
     <div id="lever-container">
         <div id="lever" onclick="changeBackground()"></div>
     </div>
-    <script>
+    <script> // Mouse Follow Image Cascade
         document.addEventListener("mousemove", function (event) {
             let img = document.createElement("img");
             img.src = "pilllary.png";
@@ -109,11 +109,13 @@
                 setTimeout(() => img.remove(), 500);
             }, 500);
         });
+        
     </script>
     <button id="mute-button" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 15px; font-size: 16px; background: red; color: white; border: 2px solid white; border-radius: 8px; cursor: pointer;">
         🔇 Mute
     </button>
-    <script>
+    <script> 
+        // Mute Button
         const audio = document.getElementById("bg-music");
         const muteButton = document.getElementById("mute-button");
         muteButton.addEventListener("click", function() {
@@ -127,6 +129,68 @@
                 muteButton.style.background = "green";
             }
         });
+
+    // Array of background images
+        let backgroundImages = [
+            'https://78.media.tumblr.com/17f014371ad62c8f7a5decffe43db5b5/tumblr_os4k2k9tRD1qlwqqzo1_540.gif',
+            'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExc25nNmI0djVoYjJ4cG1pNXVzNThjd3U5a2VvMmUyamp0ZzZqZjNsNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TJlvaTCbdcVk19aZrN/giphy.gif',
+            'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3phY3E0eDQ5aWtma2wybGxzcWtvd3B1ZXQzMGU2Y3VrZ2F1bmd2ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eGlgqKw7Xkk7PjSPE5/giphy.gif', // Add your own URLs here
+            'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGk2N254MnJtc2hwempubTI1dXVmOGE3YjV4bWV2ejRtYmw5Zm52cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41Yvub60fF4OU15C/giphy.gif' // Add more URLs as needed
+        ];
+
+        let currentImageIndex = 0;
+
+        // Function to change the background when the lever is clicked
+        function changeBackground() {
+            currentImageIndex = (currentImageIndex + 1) % backgroundImages.length; // Cycle through the images
+            document.body.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
+        }
+
+        let menuBox = document.getElementById("d"),  
+            toggleButton = document.getElementById("toggleButton"),  
+            isMoving = true,  
+            speedX = 2,  
+            speedY = 2,  
+            speedMultiplier = 1.4; // Increases speed by 40% per click  
+    
+        let toggleMovement = () => {  
+            isMoving = !isMoving;  
+            toggleButton.textContent = isMoving ? "Pause" : "Start";  
+            if (isMoving) moveMenu();  
+        };  
+        
+        let moveMenu = () => {  
+            if (!isMoving) return;  
+        
+            let menuBounds = menuBox.getBoundingClientRect(),  
+                maxWidth = window.innerWidth - menuBounds.width,  
+                maxHeight = window.innerHeight - menuBounds.height,  
+                newX = menuBox.offsetLeft + speedX,  
+                newY = menuBox.offsetTop + speedY;  
+        
+            // Reverse direction if hitting screen edges  
+            if (newX <= 0 || newX >= maxWidth) speedX *= -1;  
+            if (newY <= 0 || newY >= maxHeight) speedY *= -1;  
+        
+            menuBox.style.left = newX + "px";  
+            menuBox.style.top = newY + "px";  
+        
+            requestAnimationFrame(moveMenu);  
+        };  
+        
+        // Increase speed when menu box is clicked  
+        menuBox.addEventListener("click", () => {  
+            speedX *= speedMultiplier;  
+            speedY *= speedMultiplier;  
+        });  
+        
+        // Initialize position and start movement  
+        (function initializeMenu() {  
+            menuBox.style.position = "absolute";  
+            menuBox.style.left = (window.innerWidth - menuBox.offsetWidth) / 2 + "px";  
+            menuBox.style.top = (window.innerHeight - menuBox.offsetHeight) / 2 + "px";  
+            moveMenu();  
+        })();  
     </script>
 </body>
 </html>
