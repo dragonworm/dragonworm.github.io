@@ -78,6 +78,7 @@
             transform: translateY(40px);
         }
     </style>
+    
 </head>
 <body>
     <div class="container" id="menu">
@@ -92,22 +93,32 @@
     <div id="lever-container">
         <div id="lever" onclick="changeBackground()"></div>
     </div>
-
-    <!-- Background Music Element -->
-    <audio id="bg-music" loop>
-        <source src="your-music-file.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-
+    <script> // Mouse Follow Image Cascade
+        document.addEventListener("mousemove", function (event) {
+            let img = document.createElement("img");
+            img.src = "pilllary.png";
+            img.style.position = "absolute";
+            img.style.left = event.pageX + "px";
+            img.style.top = event.pageY + "px";
+            img.style.pointerEvents = "none";
+            img.style.opacity = "0.8";
+            img.style.transform = "translate(-50%, -50%)";
+            document.body.appendChild(img);
+            setTimeout(() => {
+                img.style.transition = "opacity 0.5s ease-out";
+                img.style.opacity = "0";
+                setTimeout(() => img.remove(), 500);
+            }, 500);
+        });
+        
+    </script>
     <button id="mute-button" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 15px; font-size: 16px; background: red; color: white; border: 2px solid white; border-radius: 8px; cursor: pointer;">
         🔇 Mute
     </button>
-
-    <script>
-        // Mute Button functionality
+    <script> 
+        // Mute Button
         const audio = document.getElementById("bg-music");
         const muteButton = document.getElementById("mute-button");
-
         muteButton.addEventListener("click", function() {
             if (audio.muted) {
                 audio.muted = false;
@@ -120,7 +131,7 @@
             }
         });
 
-        // Array of background images
+    // Array of background images
         let backgroundImages = [
             'https://78.media.tumblr.com/17f014371ad62c8f7a5decffe43db5b5/tumblr_os4k2k9tRD1qlwqqzo1_540.gif',
             'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExc25nNmI0djVoYjJ4cG1pNXVzNThjd3U5a2VvMmUyamp0ZzZqZjNsNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TJlvaTCbdcVk19aZrN/giphy.gif',
@@ -182,6 +193,9 @@
             menuBox.style.top = (window.innerHeight - menuBox.offsetHeight) / 2 + "px";  
             moveMenu();  
         })();  
+
+        
     </script>
 </body>
 </html>
+<!-- yerrrrpppp --> 
