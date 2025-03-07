@@ -89,10 +89,20 @@
         <button class="button" onclick="alert('Turn Key used!')">Merch</button>
         <button class="button" onclick="location.href='https://inyato.com/minecraft'">Minecraft</button>
     </div>
-    <button class="start-btn" id="toggleButton" onclick="toggleMovement()"></button>
+    <button class="start-btn" id="toggleButton" onclick="toggleMovement()">     </button>
     <div id="lever-container">
         <div id="lever" onclick="changeBackground()"></div>
     </div>
+
+      <!-- Background Music Element -->
+    <audio id="bg-music" loop>
+        <source src="your-music-file.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button id="mute-button" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 15px; font-size: 16px; background: red; color: white; border: 2px solid white; border-radius: 8px; cursor: pointer;">
+        🔇 Mute
+    </button>
     <script> // Mouse Follow Image Cascade
         document.addEventListener("mousemove", function (event) {
             let img = document.createElement("img");
@@ -111,14 +121,14 @@
             }, 500);
         });
         
-    </script>
-    <button id="mute-button" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 15px; font-size: 16px; background: red; color: white; border: 2px solid white; border-radius: 8px; cursor: pointer;">
-        🔇 Mute
-    </button>
-    <script> 
-        // Mute Button
+   
+  
+
+
+        // Mute Button functionality
         const audio = document.getElementById("bg-music");
         const muteButton = document.getElementById("mute-button");
+
         muteButton.addEventListener("click", function() {
             if (audio.muted) {
                 audio.muted = false;
