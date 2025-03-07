@@ -78,6 +78,7 @@
             transform: translateY(40px);
         }
     </style>
+    
 </head>
 <body>
     <div class="container" id="menu">
@@ -88,7 +89,7 @@
         <button class="button" onclick="alert('Turn Key used!')">Merch</button>
         <button class="button" onclick="location.href='https://inyato.com/minecraft'">Minecraft</button>
     </div>
-    <button class="start-btn" id="start-btn">Start</button>
+    <button class="start-btn" id="start-btn" onclick="toggleMovement()">Start</button>
     <div id="lever-container">
         <div id="lever" onclick="changeBackground()"></div>
     </div>
@@ -191,6 +192,8 @@
             menuBox.style.top = (window.innerHeight - menuBox.offsetHeight) / 2 + "px";  
             moveMenu();  
         })();  
+
+        
     </script>
 </body>
 </html>
