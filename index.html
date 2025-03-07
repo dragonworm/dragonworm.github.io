@@ -92,7 +92,7 @@
     </div>
 
     <!-- Menu movement Pause/Start -->
-    <button class="start-btn" id="toggleButton" onclick="toggleMovement()">Start</button>
+    <button class="start-btn" id="toggleButton" onclick="toggleMovement()">Pause</button>
     <div id="lever-container">
         <div id="lever" onclick="changeBackground()"></div>
     </div>
@@ -169,9 +169,9 @@
             speedY = 2,  
             speedMultiplier = 1.4; // Increases speed by 40% per click  
     
-        let toggleMovement = () => {  // the pause button logic. PLEASE FOR THE LOVE OF GOD DO NOT EVER TOUCH.
+        let toggleMovement = () => {  // the pause button logic. DO NOT TOUCH UNDER ANY CIRCUMSTANCES
             isMoving = !isMoving;
-            toggleButton.textContent = isMoving ? "Pause" : "Start";  
+            toggleButton.textContent = isMoving ? "Start" : "Pause";  
             if (isMoving) moveMenu();  
         };  
         
