@@ -147,20 +147,21 @@
             document.body.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
         }
 
-        let menuBox = document.getElementById("menu"),  
+        let menuBox = document.getElementById("menu"),  // le flying menu constructor function
             toggleButton = document.getElementById("toggleButton"),  
             isMoving = true,  
             speedX = 2,  
             speedY = 2,  
             speedMultiplier = 1.4; // Increases speed by 40% per click  
     
-        let toggleMovement = () => {  
-            isMoving = !isMoving;  
+        let toggleMovement = () => {  // the pause button logic
+            if (isMoving) !isMoving;  
+            else if (!isMoving) isMoving;
             toggleButton.textContent = isMoving ? "Pause" : "Start";  
             if (isMoving) moveMenu();  
         };  
         
-        let moveMenu = () => {  
+        let moveMenu = () => {  // handles menu flying logic
             if (!isMoving) return;  
         
             let menuBounds = menuBox.getBoundingClientRect(),  
