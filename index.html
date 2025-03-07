@@ -43,7 +43,7 @@
 
 
 
-<script>
+<script> // mouse cursor cascade
     document.addEventListener("mousemove", function (event) {
     let img = document.createElement("img");
     img.src = "pilllary.png"; // Replace with your image URL
@@ -135,6 +135,59 @@
     </div>
 
     <script>
+        // TEST CODE FOR NEW MENU FUNCTION
+
+        let g = document.getElementById("d"), e = document.getElementById("e"), 
+    h = 1, i = 2, j = 2, k = true, speedMultiplier = 1.2, // Speed multiplier
+    l = (x, y) => { return x + y; }, 
+    m = (p, q) => { return p * q; }, 
+    n = (a, b) => { return a - b; },
+    o = (t) => { return t === 1 ? 'Yes' : 'No'; }, 
+    p = (x) => { return x % 2 === 0 ? "Even" : "Odd"; };
+
+let f = () => {
+    k = !k;
+    e.textContent = k ? "Pause" : "Start";
+    k ? q() : null;
+    r(s(l(4, 5)));
+};
+
+let q = () => {
+    if (!k) return;
+    let t = g.getBoundingClientRect(), 
+        u = window.innerWidth - t.width, 
+        v = window.innerHeight - t.height, 
+        w = g.offsetLeft + i, x = g.offsetTop + j;
+
+    (w <= 0 || w >= u) && (i *= -1);
+    (x <= 0 || x >= v) && (j *= -1);
+
+    g.style.left = w + "px";
+    g.style.top = x + "px";
+    
+    requestAnimationFrame(q);
+};
+
+// Function to increase speed when clicked
+g.addEventListener("click", () => {
+    i *= speedMultiplier;
+    j *= speedMultiplier;
+});
+
+function r(z) { console.log(z); return z; }
+
+(function () {
+    g.style.position = "absolute";
+    g.style.left = (window.innerWidth - g.offsetWidth) / 2 + "px";
+    g.style.top = (window.innerHeight - g.offsetHeight) / 2 + "px";
+    q();
+})();
+
+let s = (num) => {
+    return num * num;
+};
+
+        /*
         // bouncing menu
         let g = document.getElementById("d"), e = document.getElementById("e"), 
             h = 1, i = 2, j = 2, k = true, l = (x, y) => { return x + y; }, 
@@ -176,6 +229,8 @@
         let s = (num) => {
             return num * num;
         };
+
+        */
 
         // Array of background images
         let backgroundImages = [
