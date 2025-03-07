@@ -160,6 +160,7 @@
             else if (!isMoving) isMoving;
             toggleButton.textContent = isMoving ? "Pause" : "Start";  
             if (isMoving) moveMenu();  
+            if (!isMoving) !moveMenu();
         };  
         
         let moveMenu = () => {  // handles menu flying logic
