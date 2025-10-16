@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inyato Control Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://www.inyato.com/unmute-icon.png') no-repeat center center fixed; 
+            background-size: cover;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background: #2c4f32;
+            padding: 20px;
+            border-radius: 10px;
+            position: absolute;
+        }
+        .button {
+            background: #2c4f32;
+            color: white;
+            padding: 12px 20px;
+            border: 2px solid white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Press Start 2P', sans-serif;
+            transition: 0.3s;
+            text-align: center;
+            text-decoration: none;
+            width: 200px;
+        }
+        .button:hover {
+            background: #45a049;
+            color: #FF27FF;
+            transform: scale(1.05);
+        }
+        .start-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: red;
+            color: white;
+            padding: 10px 15px;
+            border: 2px solid white;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Press Start 2P', sans-serif;
+            cursor: pointer;
+        }
+        #lever {
+            width: 150px;
+            height: auto;
+            padding: 12px 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Press Start 2P', sans-serif;
+            text-align: center;
+            border: 2px solid white;
+            transition: transform 0.3s;
+        }
+        #lever:hover {
+            background: #45a049;
+            color: #FF27FF;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Moving Social + Lever Buttons -->
+    <div class="container" id="menu">
+    <button class="button" onclick="location.href='https://open.spotify.com/artist/5NDkkVXbPJ8VG8PCr73Zpo'">Spotify</button>
+    <button class="button" onclick="location.href='https://www.youtube.com/@srock303'">YouTube</button>
+    <button class="button" onclick="location.href='https://www.instagram.com/inyato.band/'">Instagram</button>
+    <button class="button" onclick="location.href='https://soundcloud.com/limewirearchive'">Archive</button>
+    <button class="button" onclick="location.href='https://open.spotify.com/album/2hkX7F1x3HQ8ZvVyDuh6jr'">Intra EP</button>
+    <button class="button" onclick="location.href='https://inyato.com/minecraft'">Minecraft</button>
+    <!-- New Plugins button -->
+    <button class="button" onclick="location.href='https://github.com/dragonworm/acuzi-channel-strip'">Plugins</button>
+	<button class="button" onclick="location.href='https://inyato.com/gallery'">Media</button>
+    <!-- Lever moved here -->
+    <div id="lever" onclick="changeBackground()">Explode</div>
+	</div>
+
+
+    <!-- Menu movement Pause/Start Button -->
+    <button class="start-btn" id="toggleButton" onclick="toggleMovement()">Pause</button>
+
+    <!-- Background Music Element -->
+    <audio id="bg-music" loop>
+        <source src="qatar.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Background Music Mute Button -->
+    <button id="mute-button" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 15px; font-size: 16px; background: red; color: white; border: 2px solid white; border-radius: 8px; cursor: pointer;">
+        🔇 Mute
+    </button>
+    
+    <script> 
+        // Mouse Follow Image Cascade
+        document.addEventListener("mousemove", function (event) {
+            let img = document.createElement("img");
+            img.src = "pilllary.png";
+            img.style.position = "absolute";
+            img.style.left = event.pageX + "px";
+            img.style.top = event.pageY + "px";
+            img.style.pointerEvents = "none";
+            img.style.transform = "translate(-50%, -50%) scale(0.2)";
+            img.style.opacity = "0.8";
+            document.body.appendChild(img);
+            setTimeout(() => {
+                img.style.transition = "opacity 1s ease-out";
+                img.style.opacity = "0";
+                setTimeout(() => img.remove(), 1000);
+            }, 500);
+        });
+        
+        // AUDIO FIX — browser-friendly autoplay handling
+        let audio = document.getElementById("bg-music");
+        let muteButton = document.getElementById("mute-button");
+
+        // Try autoplay silently
+        audio.muted = true;
+        audio.play().catch(() => {});
+
+        // Enable sound on first click/keypress
+        function enableAudio() {
+            audio.muted = false;
+            audio.play().catch(err => console.warn("Autoplay failed:", err));
+            document.removeEventListener("click", enableAudio);
+            document.removeEventListener("keydown", enableAudio);
+        }
+        document.addEventListener("click", enableAudio);
+        document.addEventListener("keydown", enableAudio);
+
+        // Mute button functionality
+        muteButton.addEventListener("click", function() {
+            if (audio.muted) {
+                audio.muted = false;
+                muteButton.textContent = "🔇 Mute";
+                muteButton.style.background = "red";
+            } else {
+                audio.muted = true;
+                muteButton.textContent = "🔊 Unmute";
+                muteButton.style.background = "green";
+            }
+        });
+
+        // Background change images
+        let backgroundImages = [
+            'https://78.media.tumblr.com/17f014371ad62c8f7a5decffe43db5b5/tumblr_os4k2k9tRD1qlwqqzo1_540.gif',
+            'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExc25nNmI0djVoYjJ4cG1pNXVzNThjd3U5a2VvMmUyamp0ZzZqZjNsNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TJlvaTCbdcVk19aZrN/giphy.gif',
+            'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3phY3E0eDQ5aWtma2wybGxzcWtvd3B1ZXQzMGU2Y3VrZ2F1bmd2ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eGlgqKw7Xkk7PjSPE5/giphy.gif',
+            'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGk2N254MnJtc2hwempubTI1dXVmOGE3YjV4bWV2ejRtYmw5Zm52cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41Yvub60fF4OU15C/giphy.gif',
+            'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2E3eTE1enRtbmw2dGNiZTEzdWNkbWhydW10dHZxeHlia2pqNXoyYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/peRPURMI1qyMwT16Ha/giphy.gif',
+            'https://i.redd.it/ndkoog6p8jz91.gif',
+            'https://3.bp.blogspot.com/-6itZFlfknXg/T8kfFCburwI/AAAAAAAAAXg/tVINXS-6zpk/s1600/hackers-animated-crash-override.gif',
+            'https://i.imgur.com/AZzFT1h.gif',
+            'https://i.imgur.com/5Abg813.gif',
+            'https://i.imgur.com/5KgEoYL.gif'
+        ];
+        let currentImageIndex = 0;
+        function changeBackground() {
+            currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+            document.body.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
+        }
+
+        // Menu movement
+        let menuBox = document.getElementById("menu"),
+            toggleButton = document.getElementById("toggleButton"),
+            isMoving = true,
+            speedX = 2,
+            speedY = 2,
+            speedMultiplier = 1.4;
+    
+        let toggleMovement = () => {
+            isMoving = !isMoving;
+            toggleButton.textContent = isMoving ? "Start" : "Pause";
+            if (isMoving) moveMenu();
+        };
+        
+        let moveMenu = () => {
+            if (!isMoving) return;
+            let menuBounds = menuBox.getBoundingClientRect(),
+                maxWidth = window.innerWidth - menuBounds.width,
+                maxHeight = window.innerHeight - menuBounds.height,
+                newX = menuBox.offsetLeft + speedX,
+                newY = menuBox.offsetTop + speedY;
+            if (newX <= 0 || newX >= maxWidth) speedX *= -1;
+            if (newY <= 0 || newY >= maxHeight) speedY *= -1;
+            menuBox.style.left = newX + "px";
+            menuBox.style.top = newY + "px";
+            requestAnimationFrame(moveMenu);
+        };
+        
+        menuBox.addEventListener("click", () => {
+            speedX *= speedMultiplier;
+            speedY *= speedMultiplier;
+        });
+        
+        (function initializeMenu() {
+            menuBox.style.position = "absolute";
+            menuBox.style.left = (window.innerWidth - menuBox.offsetWidth) / 2 + "px";
+            menuBox.style.top = (window.innerHeight - menuBox.offsetHeight) / 2 + "px";
+            moveMenu();
+        })();
+    </script>
+</body>
+</html>
